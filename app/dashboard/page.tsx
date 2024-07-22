@@ -1,3 +1,9 @@
+import "./style.scss";
+
 export default function Dashboard() {
-	return;
+	return (
+		<div className='tiles'>
+			<div className='grid'></div>
+		</div>
+	);
 }
