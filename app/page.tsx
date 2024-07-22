@@ -11,8 +11,6 @@ const initialState = {
 export default function Home() {
 	const [state, formAction] = useFormState(Login, initialState);
 
-	console.log(state);
-
 	if (state && state.message == "Invalid credentials") {
 		toast.error("Invalid credentials", {
 			position: "top-right",
