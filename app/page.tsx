@@ -1,32 +1,46 @@
+"use client";
 import "./style.scss";
-import { createClient } from "./utils/supabase/server";
-import { cookies } from "next/headers";
+import { Login } from "./actions";
+import { useFormState } from "react-dom";
+import { Bounce, toast } from "react-toastify";
 
-async function Login(form: FormData) {
-	"use server";
-	const supabase = createClient();
-
-	const name = form.get("name");
-	const password = form.get("password");
-
-	const { data: user, error } = await supabase
-		.from("users")
-		.select()
-		.eq("name", name)
-		.eq("password", password);
-
-	if (user?.length != 0) {
-		const uuid = crypto.randomUUID();
-		cookies().set("session_id", uuid);
-	} else {
-		console.log("nuh uh");
-	}
-}
+const initialState = {
+	message: "",
+};
 
 export default function Home() {
+	const [state, formAction] = useFormState(Login, initialState);
+
+	console.log(state);
+
+	if (state && state.message == "Invalid credentials") {
+		toast.error("Invalid credentials", {
+			position: "top-right",
+			autoClose: 5000,
+			hideProgressBar: true,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "dark",
+			transition: Bounce,
+		});
+	} else if (state && state.message == "Logged in successfully") {
+		toast.success("Logged in successfully", {
+			position: "top-right",
+			autoClose: 5000,
+			hideProgressBar: true,
+			closeOnClick: true,
+			pauseOnHover: true,
+			draggable: true,
+			progress: undefined,
+			theme: "dark",
+			transition: Bounce,
+		});
+	}
 	return (
 		<main>
-			<form action={Login}>
+			<form action={formAction}>
 				<label>Name</label>
 				<input
 					type='text'
