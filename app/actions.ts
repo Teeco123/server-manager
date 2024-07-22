@@ -19,6 +19,12 @@ export async function Login(prevState: any, form: FormData) {
 
 		cookies().set("session_id", uuid);
 
+		const { error } = await supabase
+			.from("users")
+			.update({ session_id: uuid })
+			.eq("name", name)
+			.eq("password", password);
+
 		return {
 			message: "Logged in successfully",
 		};
