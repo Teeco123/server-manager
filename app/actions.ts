@@ -1,4 +1,5 @@
 "use server";
+import { redirect } from "next/navigation";
 import { createClient } from "./_utils/supabase/server";
 import { cookies } from "next/headers";
 
@@ -25,9 +26,7 @@ export async function Login(prevState: any, form: FormData) {
 			.eq("name", name)
 			.eq("password", password);
 
-		return {
-			message: "Logged in successfully",
-		};
+		redirect("/dashboard");
 	} else {
 		return {
 			message: "Invalid credentials",
