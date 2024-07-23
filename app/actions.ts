@@ -1,6 +1,6 @@
 "use server";
 import { redirect } from "next/navigation";
-import { createClient } from "./_utils/supabase/server";
+import { createClient } from "./utils/supabase/server";
 import { cookies } from "next/headers";
 
 export async function Login(prevState: any, form: FormData) {
