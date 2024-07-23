@@ -6,9 +6,48 @@
     margin: 1%;
     .grid{
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-        grid-template-rows: 1fr 1.5fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 25% 40% calc(35% - 4%);
         height: 100%;
         width: 100%;
+        grid-gap: 2%;
+        .upper-grid-tile{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+            background-color: #072734;
+            border-radius: 10px;
+            img{
+                position: relative;
+                bottom: 15%;
+                right: 10%;
+                grid-column: 1;
+                grid-row: 1;
+                width: 55%;
+                padding: 15%;
+                background-color: #117198;
+                border-radius: 10px;
+
+            }
+            .tile-title{
+                display: flex;
+                position: relative;
+                right: 10%;
+                justify-content: center;
+                font-size: 1.7rem;
+                grid-column: 2/4;
+                margin-top: 8%;
+
+            }
+        }
+        .middle-grid-tile{
+            background-color: #0b0f11;
+            border-radius: 10px;
+        }
+        .bottom-grid-tile{
+            display: grid;
+            background-color: #0b0f11;
+            border-radius: 10px;
+    }
     }
 }
