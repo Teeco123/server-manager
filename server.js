@@ -1,29 +1,20 @@
-import { createServer } from "node:http";
-import next from "next";
-import { Server } from "socket.io";
+const express = require("express");
+const next = require("next");
 
+const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_ENV !== "production";
-const hostname = "localhost";
-const port = 3000;
-// when using middleware `hostname` and `port` must be provided below
-const app = next({ dev, hostname, port });
-const handler = app.getRequestHandler();
+const app = next({ dev });
+const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
-	const httpServer = createServer(handler);
+	const server = express();
 
-	const io = new Server(httpServer);
-
-	io.on("connection", (socket) => {
-		console.log("User connected");
+	server.all("*", (req, res) => {
+		return handle(req, res);
 	});
 
-	httpServer
-		.once("error", (err) => {
-			console.error(err);
-			process.exit(1);
-		})
-		.listen(port, () => {
-			console.log(`> Ready on http://${hostname}:${port}`);
-		});
+	server.listen(port, (err) => {
+		if (err) throw err;
+		console.log(`> Ready on http://localhost:${port}`);
+	});
 });
