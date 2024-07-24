@@ -4,7 +4,9 @@
 	"private": true,
 	"type": "module",
 	"scripts": {
-		"dev": "node server.js",
+		"dev": "npm run next && npm run socket",
+		"next": "node server.js",
+		"socket": "node ./app/utils/socket.io/server.js",
 		"build": "next build",
 		"start": "cross-env NODE_ENV=production node server.js",
 		"lint": "next lint"
