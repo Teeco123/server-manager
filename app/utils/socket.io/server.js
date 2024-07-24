@@ -23,10 +23,10 @@ io.on("connection", async (socket) => {
 			return pad(hours) + ":" + pad(minutes) + ":" + pad(seconds);
 		}
 
-		const uptimeSeconds = os.uptime();
-		const uptime = format(uptimeSeconds);
-		console.log(uptime);
-		socket.emit("event", uptime);
+		const upTimeSeconds = os.uptime();
+		const upTime = format(upTimeSeconds);
+
+		socket.emit("event", upTime);
 	}, 1000);
 });
 

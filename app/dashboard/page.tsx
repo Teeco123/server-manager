@@ -1,16 +1,16 @@
 "use client";
 import { useEffect, useState } from "react";
 import "./style.scss";
-import { io } from "socket.io-client";
+import { socket } from "../utils/socket.io/client";
 
 export default function Dashboard() {
-	const [data, setData] = useState(null);
+	const [upTime, setUpTime] = useState(null);
 
 	useEffect(() => {
-		const socket = io("http://localhost:3001");
+		socket.connect();
 
-		socket.on("event", (data) => {
-			setData(data);
+		socket.on("event", (upTime) => {
+			setUpTime(upTime);
 		});
 
 		return () => {
@@ -23,7 +23,7 @@ export default function Dashboard() {
 				<div className='upper-grid-tile'>
 					<img src='uptime.png' />
 					<div className='tile-title'>Uptime</div>
-					<div className='tile-info'>{data}</div>
+					<div className='tile-info'>{upTime}</div>
 				</div>
 				<div className='upper-grid-tile'>
 					<img src='cpu.png' />
