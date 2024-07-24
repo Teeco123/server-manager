@@ -1,0 +1,12 @@
+name: server-manager
+
+services:
+  next:
+    build: ./next
+    ports:
+      - "3000:3000"
+
+  socketio:
+    build: ./socketio
+    ports:
+      - "3001:3001"
