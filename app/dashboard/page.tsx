@@ -1,12 +1,37 @@
+"use client";
 import "./style.scss";
+import { useState, useEffect } from "react";
 
 export default function Dashboard() {
+	const [upTime, setUptime] = useState(null);
+
+	useEffect(() => {
+		const ws = new WebSocket("ws://localhost:3001");
+
+		ws.onopen = () => {
+			console.log("WebSocket connected");
+		};
+
+		ws.onmessage = (event) => {
+			const data = JSON.parse(event.data);
+			setUptime(data.uptime);
+		};
+
+		ws.onerror = (error) => {
+			console.error("WebSocket error:", error);
+		};
+
+		ws.onclose = () => {
+			console.log("WebSocket closed");
+		};
+	}, []);
+
 	return (
 		<div className='tiles'>
 			<div className='grid'>
 				<div className='upper-grid-tile'>
 					<img src='uptime.png' />
-					<div className='tile-title'>Uptime</div>
+					<div className='tile-title'>{upTime}</div>
 				</div>
 				<div className='upper-grid-tile'>
 					<img src='cpu.png' />
