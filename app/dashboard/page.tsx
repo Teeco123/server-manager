@@ -11,6 +11,7 @@ export default function Dashboard() {
 				<div className='upper-grid-tile'>
 					<img src='cpu.png' />
 					<div className='tile-title'>CPU</div>
+					<div className='tile-info'></div>
 				</div>
 				<div className='upper-grid-tile'>
 					<img src='ram.png' />
@@ -20,14 +21,10 @@ export default function Dashboard() {
 					<img src='hdd.png' />
 					<div className='tile-title'>Storage</div>
 				</div>
+				<div className='middle-wide-tile'></div>
 				<div className='middle-grid-tile'></div>
-				<div className='middle-grid-tile'></div>
-				<div className='middle-grid-tile'></div>
-				<div className='middle-grid-tile'></div>
-				<div className='bottom-grid-tile'></div>
-				<div className='bottom-grid-tile'></div>
-				<div className='bottom-grid-tile'></div>
-				<div className='bottom-grid-tile'></div>
+				<div className='bottom1-grid-tile'></div>
+				<div className='bottom2-grid-tile'></div>
 			</div>
 		</div>
 	);
