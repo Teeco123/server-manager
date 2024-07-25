@@ -20,11 +20,12 @@ export default function Dashboard() {
 			setCpuSpeed(cpuSpeed);
 			setRam(ram);
 		});
-
-		socket.on("disk-stats", (totalDiskSize, freeDiskSize) => {
-			setTotalDiskSize(totalDiskSize);
-			setfreeDiskSize(freeDiskSize);
-		});
+		fetch("/api/getDiskSize")
+			.then((res) => res.json())
+			.then((data) => {
+				setTotalDiskSize(data.totalDiskSize);
+				setfreeDiskSize(data.freeDiskSize);
+			});
 
 		return () => {
 			socket.disconnect();

@@ -1,7 +1,6 @@
 import * as http from "http";
 import { Server } from "socket.io";
 import os from "node:os";
-import checkDiskSpace from "check-disk-space";
 
 const server = http.createServer();
 const io = new Server(server, {
@@ -41,29 +40,6 @@ io.on("connection", async (socket) => {
 
 		const ramBytes = os.totalmem();
 		const ram = bytesToSize(ramBytes);
-
-		const osType = os.type();
-
-		let totalDiskSize;
-		let freeDiskSize;
-
-		if (osType == "Windows_NT") {
-			checkDiskSpace("C:/").then((diskSpace) => {
-				totalDiskSize = bytesToSize(diskSpace.size);
-				freeDiskSize = bytesToSize(diskSpace.free);
-
-				socket.emit("disk-stats", totalDiskSize, freeDiskSize);
-			});
-		}
-
-		if (osType == "Linux") {
-			checkDiskSpace("/dev/sda").then((diskSpace) => {
-				totalDiskSize = bytesToSize(diskSpace.size);
-				freeDiskSize = bytesToSize(diskSpace.free);
-
-				socket.emit("disk-stats", totalDiskSize, freeDiskSize);
-			});
-		}
 
 		socket.emit("pc-cpu-ram-stats", upTime, cpuModel, cpuSpeed, ram);
 	}, 1000);
