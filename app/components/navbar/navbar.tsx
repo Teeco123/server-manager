@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { Logout } from "./actions";
 import "./style.scss";
 
 export default function Navbar() {
@@ -18,9 +19,11 @@ export default function Navbar() {
 			<div className='user-info'>
 				<img src='account.png' />
 				<div className='user'>{username}</div>
-				<button>
-					<img src='logout.png' />
-				</button>
+				<form action={Logout}>
+					<button>
+						<img src='logout.png' />
+					</button>
+				</form>
 			</div>
 			<a
 				href='/dashboard'
