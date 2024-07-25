@@ -2,7 +2,6 @@ import os from "node:os";
 import checkDiskSpace from "check-disk-space";
 import { NextRequest, NextResponse } from "next/server";
 
-export const dynamic = "force-dynamic";
 export async function GET(request: NextRequest) {
 	function bytesToSize(bytes: number) {
 		const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
