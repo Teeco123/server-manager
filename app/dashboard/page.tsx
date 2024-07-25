@@ -14,17 +14,23 @@ export default function Dashboard() {
 	useEffect(() => {
 		socket.connect();
 
-		socket.on("pc-cpu-ram-stats", (upTime, cpuModel, cpuSpeed, ram) => {
+		socket.on("pc-cpu-ram-stats", (upTime) => {
 			setUpTime(upTime);
-			setCpuModel(cpuModel);
-			setCpuSpeed(cpuSpeed);
-			setRam(ram);
 		});
+
 		fetch("/api/getDiskSize")
 			.then((res) => res.json())
 			.then((data) => {
 				setTotalDiskSize(data.totalDiskSize);
 				setfreeDiskSize(data.freeDiskSize);
+			});
+
+		fetch("/api/getCpuRam")
+			.then((res) => res.json())
+			.then((data) => {
+				setCpuModel(data.cpuModel);
+				setCpuSpeed(data.cpuSpeed);
+				setRam(data.ram);
 			});
 
 		return () => {
