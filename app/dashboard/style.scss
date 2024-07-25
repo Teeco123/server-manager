@@ -76,6 +76,22 @@
                 position: relative;
                 bottom: 15%
             }
+            .total-disk{
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                grid-column: 1/4;
+                grid-row: 2;
+                font-size: 1.3vw;
+            }
+            .free-disk{
+                display: flex;
+                justify-content: center;
+                text-align: center;
+                grid-column: 1/4;
+                grid-row: 3;
+                font-size: 1.3vw;
+            }
         }
         .middle-wide-tile{
             grid-column: 1/4;

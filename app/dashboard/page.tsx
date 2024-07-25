@@ -8,21 +8,29 @@ export default function Dashboard() {
 	const [cpuModel, setCpuModel] = useState(null);
 	const [cpuSpeed, setCpuSpeed] = useState(null);
 	const [ram, setRam] = useState(null);
+	const [totalDiskSize, setTotalDiskSize] = useState(null);
+	const [freeDiskSize, setfreeDiskSize] = useState(null);
 
 	useEffect(() => {
 		socket.connect();
 
-		socket.on("event", (upTime, cpuModel, cpuSpeed, ram) => {
+		socket.on("pc-cpu-ram-stats", (upTime, cpuModel, cpuSpeed, ram) => {
 			setUpTime(upTime);
 			setCpuModel(cpuModel);
 			setCpuSpeed(cpuSpeed);
 			setRam(ram);
 		});
 
+		socket.on("disk-stats", (totalDiskSize, freeDiskSize) => {
+			setTotalDiskSize(totalDiskSize);
+			setfreeDiskSize(freeDiskSize);
+		});
+
 		return () => {
 			socket.disconnect();
 		};
 	}, []);
+
 	return (
 		<div className='tiles'>
 			<div className='grid'>
@@ -38,7 +46,7 @@ export default function Dashboard() {
 						Model: <br /> {cpuModel}
 					</div>
 					<div className='cpu-speed'>
-						Speed <br /> {cpuSpeed} MHz
+						Speed: <br /> {cpuSpeed} MHz
 					</div>
 				</div>
 				<div className='upper-grid-tile'>
@@ -49,6 +57,14 @@ export default function Dashboard() {
 				<div className='upper-grid-tile'>
 					<img src='hdd.png' />
 					<div className='tile-title'>Storage</div>
+					<div className='total-disk'>
+						Total: <br />
+						{totalDiskSize}
+					</div>
+					<div className='free-disk'>
+						Free: <br />
+						{freeDiskSize}
+					</div>
 				</div>
 				<div className='middle-wide-tile'></div>
 				<div className='middle-grid-tile'></div>
