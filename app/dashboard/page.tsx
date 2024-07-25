@@ -5,12 +5,18 @@ import { socket } from "../utils/socket.io/client";
 
 export default function Dashboard() {
 	const [upTime, setUpTime] = useState(null);
+	const [cpuModel, setCpuModel] = useState(null);
+	const [cpuSpeed, setCpuSpeed] = useState(null);
+	const [ram, setRam] = useState(null);
 
 	useEffect(() => {
 		socket.connect();
 
-		socket.on("event", (upTime) => {
+		socket.on("event", (upTime, cpuModel, cpuSpeed, ram) => {
 			setUpTime(upTime);
+			setCpuModel(cpuModel);
+			setCpuSpeed(cpuSpeed);
+			setRam(ram);
 		});
 
 		return () => {
@@ -23,16 +29,22 @@ export default function Dashboard() {
 				<div className='upper-grid-tile'>
 					<img src='uptime.png' />
 					<div className='tile-title'>Uptime</div>
-					<div className='tile-info'>{upTime}</div>
+					<div className='uptime'>{upTime}</div>
 				</div>
 				<div className='upper-grid-tile'>
 					<img src='cpu.png' />
 					<div className='tile-title'>CPU</div>
-					<div className='tile-info'></div>
+					<div className='cpu-model'>
+						Model: <br /> {cpuModel}
+					</div>
+					<div className='cpu-speed'>
+						Speed <br /> {cpuSpeed} MHz
+					</div>
 				</div>
 				<div className='upper-grid-tile'>
 					<img src='ram.png' />
 					<div className='tile-title'>RAM</div>
+					<div className='total-ram'>{ram}</div>
 				</div>
 				<div className='upper-grid-tile'>
 					<img src='hdd.png' />
