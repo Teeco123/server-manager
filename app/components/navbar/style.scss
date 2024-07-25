@@ -40,11 +40,12 @@
         margin: 2% 5%;
         padding: 5%;
         height: 6%;
-        color:#d0e7e8;
+        color:#848a8e;
         align-items: center;
         text-decoration: none;
         img{
             height: 80%;
+            filter: brightness(0.65);
         }
         .tile-name{
             margin-left: 15%;
@@ -52,6 +53,10 @@
         }
         &:hover{
             cursor: pointer;
+            color:#d0e7e8;
+            img{
+                filter: brightness(1);
+            }
         }
     }
 }
