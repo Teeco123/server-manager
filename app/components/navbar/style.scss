@@ -1,8 +1,37 @@
 .navbar{
     display: flex;
+    flex-direction: column;
     background-color: #0b0f11;
     color: #dcebf1;
     border-radius: 10px;
     width: 380px;
     margin: 1%;
+    .user-info{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        justify-items: center;
+        align-items: center;
+        height: 8%;
+        margin: 5%;
+        img{
+            width: 17%;
+        }
+        .user{
+            font-size: 1.3vmax;
+        }
+        button{
+            border: none;
+            width: 17%;
+            height: 100%;
+            padding: 0;
+            background-color: #0b0f11;
+            &:hover{
+                cursor: pointer;
+            }
+            img{
+                width: 100%;
+            }
+        }
+    }
 }

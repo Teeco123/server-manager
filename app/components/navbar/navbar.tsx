@@ -15,7 +15,13 @@ export default function Navbar() {
 
 	return (
 		<div className='navbar'>
-			<div className='user'>{username}</div>
+			<div className='user-info'>
+				<img src='account.png' />
+				<div className='user'>{username}</div>
+				<button>
+					<img src='logout.png' />
+				</button>
+			</div>
 		</div>
 	);
 }
