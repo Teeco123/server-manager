@@ -22,6 +22,12 @@ export default function Navbar() {
 					<img src='logout.png' />
 				</button>
 			</div>
+			<a
+				href='/dashboard'
+				className='nav-tile'>
+				<img src='overview.png' />
+				<div className='tile-name'>Overview</div>
+			</a>
 		</div>
 	);
 }

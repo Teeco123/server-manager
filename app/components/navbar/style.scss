@@ -13,7 +13,8 @@
         justify-items: center;
         align-items: center;
         height: 8%;
-        margin: 5%;
+        margin: 5% 8%;
+        margin-bottom: 15%;
         img{
             width: 17%;
         }
@@ -32,6 +33,25 @@
             img{
                 width: 100%;
             }
+        }
+    }
+    .nav-tile{
+        display: flex;
+        margin: 5%;
+        padding: 5%;
+        height: 6%;
+        color:#d0e7e8;
+        align-items: center;
+        text-decoration: none;
+        img{
+            height: 80%;
+        }
+        .tile-name{
+            margin-left: 15%;
+            font-size: 160%;
+        }
+        &:hover{
+            cursor: pointer;
         }
     }
 }
