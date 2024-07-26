@@ -32,19 +32,19 @@ export default function Navbar() {
 				<div className='tile-name'>Overview</div>
 			</a>
 			<a
-				href='/usage'
+				href='/dashboard/usage'
 				className='nav-tile'>
 				<img src='/usage.png' />
 				<div className='tile-name'>Usage</div>
 			</a>
 			<a
-				href='/photos'
+				href='/dashboard/photos'
 				className='nav-tile'>
 				<img src='/photos.png' />
 				<div className='tile-name'>Photos</div>
 			</a>
 			<a
-				href='/docker'
+				href='/dashboard/docker'
 				className='nav-tile'>
 				<img src='/docker.png' />
 				<div className='tile-name'>Docker</div>
