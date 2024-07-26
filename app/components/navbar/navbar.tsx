@@ -17,36 +17,36 @@ export default function Navbar() {
 	return (
 		<div className='navbar'>
 			<div className='user-info'>
-				<img src='account.png' />
+				<img src='/account.png' />
 				<div className='user'>{username}</div>
 				<form action={Logout}>
 					<button>
-						<img src='logout.png' />
+						<img src='/logout.png' />
 					</button>
 				</form>
 			</div>
 			<a
 				href='/dashboard'
 				className='nav-tile'>
-				<img src='overview.png' />
+				<img src='/overview.png' />
 				<div className='tile-name'>Overview</div>
 			</a>
 			<a
 				href='/usage'
 				className='nav-tile'>
-				<img src='usage.png' />
+				<img src='/usage.png' />
 				<div className='tile-name'>Usage</div>
 			</a>
 			<a
 				href='/photos'
 				className='nav-tile'>
-				<img src='photos.png' />
+				<img src='/photos.png' />
 				<div className='tile-name'>Photos</div>
 			</a>
 			<a
 				href='/docker'
 				className='nav-tile'>
-				<img src='docker.png' />
+				<img src='/docker.png' />
 				<div className='tile-name'>Docker</div>
 			</a>
 		</div>
